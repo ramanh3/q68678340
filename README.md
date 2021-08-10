@@ -14,6 +14,8 @@ The key steps is copieing message-id and macking subject from the original messa
 
     public static void main(String[] args) {
         ...
+        //I need some way to start so let's assume I have the gmail id of some messages.
+    
         String gmailId = "gmail id";
         String mailbox = "mailbox@gmail.com";
         Message original = gmail.users().messages().get(mailbox, gmailId)
@@ -30,7 +32,7 @@ The key steps is copieing message-id and macking subject from the original messa
             Message replayEmail = createReplayEmail(replyHeaders,original.getThreadId());
             gmail.users()
                     .messages()
-                    .send(mailbox,replayEmail)
+                    .send("target@gmail.com",replayEmail)
                     .execute();
         } catch (Exception e) {
             e.printStackTrace();
